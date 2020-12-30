@@ -14,3 +14,32 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+
+/*   ROTAS PRA SERVIÇO DO POST */
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('posts',  ['uses' => 'PostController@allPosts']);
+  
+    $router->get('posts/{id}', ['uses' => 'PostController@onePost']);
+  
+    $router->post('posts', ['uses' => 'PostController@create']);
+  
+    $router->delete('posts/{id}', ['uses' => 'PostController@delete']);
+  
+    $router->put('posts/{id}', ['uses' => 'PostController@update']);
+  });
+
+  /*   ROTAS PRA SERVIÇO DO Autores */
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('autores',  ['uses' => 'AutorController@allAutores']);
+  
+    $router->get('autores/{id}', ['uses' => 'AutorController@oneAutor']);
+  
+    $router->post('autores', ['uses' => 'AutorController@create']);
+  
+    $router->delete('autores/{id}', ['uses' => 'AutorController@delete']);
+  
+    $router->put('autores/{id}', ['uses' => 'AutorController@update']);
+  });
