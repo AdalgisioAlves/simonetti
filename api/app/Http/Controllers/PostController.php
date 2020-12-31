@@ -6,19 +6,29 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 use App\Posts;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+
 class PostController extends BaseController
 {
     //
     public function allPosts()
     {
         $posts =  DB::table('posts')
-        ->join('autores', 'posts.id_autor', '=', 'autores.id')
-        ->select('posts.*','autores.nome as autor')
-        ->get();
+            ->join('autores', 'posts.id_autor', '=', 'autores.id')
+            ->select('posts.*', 'autores.nome as autor')
+            ->get();
 
         return response()->json($posts);
     }
+    public function onePost($id, Request $request)
+    {
+        $posts =  DB::table('posts')
+            ->join('autores', 'posts.id_autor', '=', 'autores.id')
+            ->select('posts.*', 'autores.nome as autor')
+            ->where('posts.id', '=', $id)
+            ->get();
 
+        return response()->json($posts);
+    }
     public function create(Request $request)
     {
         $this->validate($request, [
@@ -39,5 +49,11 @@ class PostController extends BaseController
 
         return response()->json($Posts, 200);
     }
+    public function delete($id, Request $request)
+    {
+        $Posts = Posts::findOrFail($id);
+        $Posts->delete();
 
+        return response()->json($Posts, 200);
+    }
 }

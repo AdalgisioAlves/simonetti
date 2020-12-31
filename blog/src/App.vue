@@ -12,6 +12,8 @@
         <nav class="nav d-flex justify">
            <router-link to="/" class="p-2 link-secondary">Home</router-link>
            <router-link to="/NovoPost" class="p-2 link-secondary">Novo Post</router-link>
+            <router-link to="/NovoContato" class="p-2 link-secondary">Contatos</router-link>
+             <router-link to="/Mensagens" class="p-2 link-secondary">Mensagens</router-link>
           
         </nav>
       </div>

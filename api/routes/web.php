@@ -43,3 +43,15 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   
     $router->put('autores/{id}', ['uses' => 'AutorController@update']);
   });
+  
+$router->group(['prefix' => 'api'], function () use ($router) {
+  $router->get('contatos',  ['uses' => 'ContatoController@allContatos']);
+
+  $router->get('contatos/{id}', ['uses' => 'ContatoController@oneCotato']);
+
+  $router->post('contatos', ['uses' => 'ContatoController@create']);
+
+  $router->delete('contatos/{id}', ['uses' => 'ContatoController@delete']);
+
+  $router->put('contatos/{id}', ['uses' => 'AutorController@update']);
+});

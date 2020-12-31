@@ -16,7 +16,8 @@
               <p class="card-text mb-auto">
               {{post.autor}}
               </p>
-              <a href="#" class="stretched-link">Continue reading</a>
+              <router-link :to="{ name: 'LerArtigo', query:{id: post.id}}" class="stretched-link">Continue Lendo</router-link>
+ 
             </div>
             <div class="col-auto d-none d-lg-block">
                 <title>Placeholder</title>
